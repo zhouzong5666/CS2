@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>反恐精英 2 | 官方网站</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", "Microsoft YaHei", sans-serif;
+    }
+
+    body {
+      background: url("photo/背景.webp") fixed center/cover no-repeat;
+      color: #fff;
+      position: relative;
+      padding-top: 80px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(17, 17, 27, 0.9);
+      z-index: -1;
+    }
+
+    .music-bar {
+      position: fixed;
+      top: 70px;
+      right: 10px;
+      z-index: 9999;
+      background-color: transparent;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .music-bar audio {
+      width: 280px;
+      outline: none;
+      background-color: rgba(17, 17, 27, 0.5);
+      border-radius: 3px;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9998;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background-color: rgba(17, 17, 17, 0.95);
+      border-bottom: 1px solid #ff4444;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff4444;
+      text-decoration: none;
+    }
+
+    .nav {
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover, .nav a.active {
+      color: #ff4444;
+    }
+
+    .official-btn {
+      background-color: #ff4444;
+      padding: 8px 15px;
+      border-radius: 3px;
+    }
+
+    .official-btn:hover {
+      background-color: #cc0000;
+      color: #fff !important;
+    }
+
+    .banner {
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      background: linear-gradient(rgba(17, 17, 27, 0.5), rgba(17, 17, 27, 0.8));
+    }
+
+    .banner h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .banner p {
+      font-size: 22px;
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
+
+    .banner .btn {
+      background-color: #ff4444;
+      color: #fff;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .banner .btn:hover {
+      background-color: #cc0000;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 60px auto;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #fff;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #ff4444;
+    }
+
+    .intro {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+
+    .intro-img {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .intro-img img {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+    }
+
+    .intro-text {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .intro-text p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 80px;
+    }
+
+    .feature-card {
+      width: 300px;
+      background-color: rgba(30, 30, 46, 0.8);
+      padding: 30px;
+      border-radius: 5px;
+      border-left: 4px solid #ff4444;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(30, 30, 46, 1);
+    }
+
+    .feature-card h3 {
+      color: #ff4444;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .feature-card p {
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    .form {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: rgba(30, 30, 46, 0.8);
+      padding: 40px;
+      border-radius: 5px;
+    }
+
+    .form-item {
+      margin-bottom: 20px;
+    }
+
+    .form label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .form input, .form select, .form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 3px;
+      background-color: rgba(17, 17, 27, 0.8);
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .form input:focus, .form textarea:focus {
+      outline: none;
+      border-color: #ff4444;
+    }
+
+    .btn {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #cc0000;
+    }
+
+    .footer {
+      background-color: rgba(17, 17, 27, 0.95);
+      color: #aaa;
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+      border-top: 1px solid #ff4444;
+    }
+
+    .footer p {
+      margin-bottom: 10px;
+    }
+
+    .footer .links {
+      margin-top: 15px;
+    }
+
+    .footer .links a {
+      color: #aaa;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 14px;
+    }
+
+    .footer .links a:hover {
+      color: #ff4444;
+    }
+  </style>
+</head>
+<body>
+<div class="music-bar">
+  <audio src="music/你看到的我.mp3" autoplay loop controls>
+    你的浏览器不支持音频播放
+  </audio>
+</div>
+
+<div class="top-bar">
+  <a href="首页.html" class="logo">CS2</a>
+
+  <div class="nav">
+    <ul>
+      <li><a href="首页.html" class="active">首页</a></li>
+      <li><a href="游戏模式.html">游戏模式</a></li>
+      <li><a href="武器库.html">武器库</a></li>
+      <li><a href="游戏视频.html">游戏视频</a></li>
+      <li><a href="玩家反馈.html">玩家反馈</a></li>
+      <li><a href="https://www.counter-strike.net/cs2" target="_blank" class="official-btn">官方网站</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="banner">
+  <h1>反恐精英 2</h1>
+  <p>基于起源2引擎打造的新一代竞技射击游戏，传承经典，重塑体验</p>
+  <a href="https://www.counter-strike.net/cs2" target="_blank" class="btn">访问官方网站</a>
+</div>
+
+<div class="container">
+  <h2 class="title">游戏简介</h2>
+  <div class="intro">
+    <div class="intro-img">
+      <img src="photo/首页背景.png" alt="CS2游戏画面">
+    </div>
+    <div class="intro-text">
+      <p>《反恐精英 2》（CS2）是Valve开发的经典射击游戏续作，基于全新的起源2引擎打造，带来了革命性的画面表现与物理效果。</p>
+      <p>游戏延续了CT与T阵营的经典对抗玩法，玩家需要通过团队配合、精准射击完成任务——无论是安放/拆除炸弹，还是解救人质，每一场对局都是策略与操作的双重考验。</p>
+      <p>CS2保留了系列标志性的枪械手感与竞技平衡，同时加入了全新的地图、武器皮肤系统与赛事生态，是全球电子竞技领域的核心赛事项目之一。</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="title">核心特色</h2>
+  <div class="features">
+    <div class="feature-card">
+      <h3>多元游戏模式</h3>
+      <p>包含竞技排位、休闲匹配、死斗训练、军备竞赛等玩法，覆盖从新手到职业选手的全阶段需求。</p>
+    </div>
+    <div class="feature-card">
+      <h3>真实枪械手感</h3>
+      <p>每把武器都拥有独立的弹道、后坐力与伤害模型，还原真实射击体验，操作熟练度决定竞技上限。</p>
+    </div>
+    <div class="feature-card">
+      <h3>起源2引擎革新</h3>
+      <p>实时光追、物理渲染与动态植被，带来电影级画面表现，同时保持低配置设备的流畅运行。</p>
+    </div>
+    <div class="feature-card">
+      <h3>全球电竞生态</h3>
+      <p>Major系列赛事、职业联赛体系，高额奖金池与全球直播覆盖，见证顶尖选手的巅峰对决。</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="title">玩家反馈</h2>
+  <form class="form">
+    <div class="form-item">
+      <label for="name">你的昵称</label>
+      <input type="text" id="name" placeholder="请输入游戏昵称" required>
+    </div>
+    <div class="form-item">
+      <label for="email">联系邮箱</label>
+      <input type="email" id="email" placeholder="请输入邮箱" required>
+    </div>
+    <div class="form-item">
+      <label for="mode">最喜欢的模式</label>
+      <select id="mode" required>
+        <option value="">请选择</option>
+        <option value="竞技">竞技模式</option>
+        <option value="休闲">休闲模式</option>
+        <option value="死斗">死斗模式</option>
+      </select>
+    </div>
+    <div class="form-item">
+      <label for="msg">反馈内容</label>
+      <textarea id="msg" rows="5" placeholder="请输入你的建议或问题"></textarea>
+    </div>
+    <button type="submit" class="btn">提交反馈</button>
+  </form>
+</div>
+
+<div class="footer">
+  <p>CS2主题站 © 2025 遂宁工程职业学院——周天赐</p>
+  <div class="links">
+    <a href="https://www.valvesoftware.com/zh-cn/" target="_blank">Valve官方网站</a>
+    <a href="https://store.steampowered.com/app/730/CounterStrike_2/" target="_blank">Steam商店页面</a>
+    <a href="玩家反馈.html">反馈与建议</a>
+  </div>
+</div>
+
+<script>
+  const form = document.querySelector('.form');
+  form.onsubmit = function(e) {
+    e.preventDefault();
+    alert('反馈提交成功！感谢你的建议～');
+    form.reset();
+  }
+</script>
+</body>
+</html>

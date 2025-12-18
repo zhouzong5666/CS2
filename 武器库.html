@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反恐精英 2 | 武器库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background: url("photo/首页背景.png") fixed center/cover no-repeat;
+            color: #fff;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17, 17, 27, 0.9);
+            z-index: -1;
+        }
+
+        .music-bar {
+            position: fixed;
+            top: 70px;
+            right: 10px;
+            z-index: 9999;
+            background-color: transparent;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .music-bar audio {
+            width: 280px;
+            outline: none;
+            background-color: rgba(17, 17, 27, 0.5);
+            border-radius: 3px;
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9998;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: rgba(17, 17, 17, 0.95);
+            border-bottom: 1px solid #ff4444;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4444;
+            text-decoration: none;
+        }
+
+        .nav {
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: #ff4444;
+        }
+
+        .official-btn {
+            background-color: #ff4444;
+            padding: 8px 15px;
+            border-radius: 3px;
+        }
+
+        .official-btn:hover {
+            background-color: #cc0000;
+            color: #fff !important;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            background-color: rgba(30, 30, 46, 0.85);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.15);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #ff4444;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-size: 28px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #ff4444;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            padding-left: 10px;
+        }
+
+        .weapon-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 15px 0;
+            justify-content: flex-start;
+        }
+
+        .weapon-card {
+            width: 220px;
+            background-color: rgba(17, 17, 27, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 68, 68, 0.2);
+        }
+
+        .weapon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3);
+            border-color: #ff4444;
+        }
+
+        .weapon-img {
+            width: 180px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            background-color: rgba(40, 40, 60, 0.8);
+            border: 1px solid #444;
+        }
+
+        .weapon-name {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .weapon-desc {
+            font-size: 14px;
+            color: #ddd;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .footer {
+            background-color: rgba(17, 17, 27, 0.95);
+            color: #aaa;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            border-top: 1px solid #ff4444;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer .links {
+            margin-top: 15px;
+        }
+
+        .footer .links a {
+            color: #aaa;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+
+        .footer .links a:hover {
+            color: #ff4444;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="top-bar">
+    <a href="首页.html" class="logo">CS2</a>
+    <div class="nav">
+        <ul>
+            <li><a href="首页.html">首页</a></li>
+            <li><a href="游戏模式.html">游戏模式</a></li>
+            <li><a href="武器库.html" class="active">武器库</a></li>
+            <li><a href="游戏视频.html">游戏视频</a></li>
+            <li><a href="玩家反馈.html">玩家反馈</a></li>
+            <li><a href="https://www.counter-strike.net/cs2" target="_blank" class="official-btn">官方网站</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <h1 class="title">CS2 全武器介绍（新手版）</h1>
+
+    <h2>🔵 警方（CT）武器一览</h2>
+
+    <h3>🔫 手枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/USP.jfif" alt="USP手枪" class="weapon-img">
+            <div class="weapon-name">USP</div>
+            <div class="weapon-desc">精准度高，连射弹道密集，无声是其优势，适合远距离点射。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/P2000.jfif" alt="P2000手枪" class="weapon-img">
+            <div class="weapon-name">P2000</div>
+            <div class="weapon-desc">与USP相似，但弹夹容量更大，适合C段位以下的玩家使用。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/P250.jfif" alt="P250手枪" class="weapon-img">
+            <div class="weapon-name">P250</div>
+            <div class="weapon-desc">加强破甲的USP，适合eco局。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/双枪.jfif" alt="双枪" class="weapon-img">
+            <div class="weapon-name">双枪（Dual Barettas）</div>
+            <div class="weapon-desc">弹夹容量大，但破甲低，弹道不稳定，适合手枪局CT防rush。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/R8.jfif" alt="R8左轮手枪" class="weapon-img">
+            <div class="weapon-name">R8左轮手枪</div>
+            <div class="weapon-desc">R8左轮别称左轮，午时已到！适合高手玩家</div>
+        </div>
+    </div>
+
+    <h3>💨 冲锋枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/小蜜蜂.jfif" alt="MP9冲锋枪" class="weapon-img">
+            <div class="weapon-name">MP9</div>
+            <div class="weapon-desc">俗称小蜜蜂，射速极快，近距离爆发高，适合警察专用rush。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/MP7.jfif" alt="MP7冲锋枪" class="weapon-img">
+            <div class="weapon-name">MP7</div>
+            <div class="weapon-desc">属性平均，后坐力小，适合打中距离。</div>
+        </div>
+    </div>
+
+    <h3>🖥️ 步枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/M4A1.jfif" alt="M4A1步枪" class="weapon-img">
+            <div class="weapon-name">M4A1</div>
+            <div class="weapon-desc">多数玩家的选择，后坐力小，中远距离控枪容易。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/M4A4.jfif" alt="M4A4步枪" class="weapon-img">
+            <div class="weapon-name">M4A4</div>
+            <div class="weapon-desc">相比A1射速更快，弹容更高，近距离火力更强大。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/AUG.jfif" alt="AUG步枪" class="weapon-img">
+            <div class="weapon-name">AUG</div>
+            <div class="weapon-desc">近距离可以一枪头，后坐力较小，但价格昂贵。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/法玛斯.jfif" alt="法玛斯步枪" class="weapon-img">
+            <div class="weapon-name">法玛斯</div>
+            <div class="weapon-desc">经济低时的强起选择，综合属性较差，但中距离对枪有优势。</div>
+        </div>
+    </div>
+
+    <h3>🎯 狙击枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/AWP.jfif" alt="AWP狙击枪" class="weapon-img">
+            <div class="weapon-name">AWP</div>
+            <div class="weapon-desc">经典狙击枪，一枪一个，适合给队伍里的大哥起。</div>
+        </div>
+    </div>
+
+    <h3>⚡ 其他</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/电击枪.jfif" alt="电击枪" class="weapon-img">
+            <div class="weapon-name">电击枪</div>
+            <div class="weapon-desc">老六专用，用于偷袭敌人。</div>
+        </div>
+    </div>
+
+    <h2>🔴 匪方（T）武器一览</h2>
+
+    <h3>🔫 手枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/格洛克.jfif" alt="格洛克手枪" class="weapon-img">
+            <div class="weapon-name">格洛克（Glock）</div>
+            <div class="weapon-desc">T默认手枪，弹夹容量极大，适合近距离泼水。</div>
+        </div>
+        <div class="weapon-card">
+            <img src="photo/武器/Tec-9.jfif" alt="Tec-9手枪" class="weapon-img">
+            <div class="weapon-name">Tec-9</div>
+            <div class="weapon-desc">射速快，穿甲强，适合eco局。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/FN57.jfif" alt="FN57手枪" class="weapon-img">
+            <div class="weapon-name">FN57</div>
+            <div class="weapon-desc">大弹夹，高穿甲，近距离能一枪头。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/CZ75.jfif" alt="CZ75手枪" class="weapon-img">
+            <div class="weapon-name">CZ75</div>
+            <div class="weapon-desc">全自动手枪，适合有节奏的点射。</div>
+        </div>
+        <div class="weapon-card">
+            <img src="photo/武器/R8.jfif" alt="R8左轮手枪" class="weapon-img">
+            <div class="weapon-name">R8左轮手枪</div>
+            <div class="weapon-desc">R8左轮别称左轮，午时已到！适合高手玩家</div>
+        </div>
+        <div class="weapon-card">
+            <img src="photo/武器/沙漠之鹰.jfif" alt="沙漠之鹰" class="weapon-img">
+            <div class="weapon-name">沙漠之鹰</div>
+            <div class="weapon-desc">别名700块钱大狙，价值700块。能一枪爆头，是狙!</div>
+        </div>
+    </div>
+
+    <h3>💨 冲锋枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/吹子.jfif" alt="MAC-10冲锋枪" class="weapon-img">
+            <div class="weapon-name">MAC-10</div>
+            <div class="weapon-desc">俗称吹风机，悍匪专用rush枪，价格便宜。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/UMP-45.jfif" alt="UMP45冲锋枪" class="weapon-img">
+            <div class="weapon-name">UMP45</div>
+            <div class="weapon-desc">威力大，近距离爆发高，但射速较慢。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/P90.jfif" alt="P90冲锋枪" class="weapon-img">
+            <div class="weapon-name">P90</div>
+            <div class="weapon-desc">最强冲锋枪，大弹夹，跑打射速快，适合新手。</div>
+        </div>
+    </div>
+
+    <h3>🖥️ 步枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/AK-47.jfif" alt="AK47步枪" class="weapon-img">
+            <div class="weapon-name">AK47</div>
+            <div class="weapon-desc">性价比最高的枪，威力大，可以全距离有甲一枪头或者四枪身体死，但后坐力大。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/加利尔AR.jfif" alt="加利尔步枪" class="weapon-img">
+            <div class="weapon-name">加利尔（Galilar）</div>
+            <div class="weapon-desc">匪方步枪，属性均衡。</div>
+        </div>
+
+        <div class="weapon-card">
+            <img src="photo/武器/鸟狙.jfif" alt="FAMAS步枪" class="weapon-img">
+            <div class="weapon-name">FAMAS</div>
+            <div class="weapon-desc">虽然归类为警用武器，但在某些社区服或非官方比赛中匪也可以使用，特点与法玛斯相似。</div>
+        </div>
+    </div>
+
+    <h3>🎯 狙击枪</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/AWP.jfif" alt="AWP狙击枪" class="weapon-img">
+            <div class="weapon-name">狙击枪说明</div>
+            <div class="weapon-desc">与警方相同，匪方也可以使用AWP等狙击枪，但需要自行购买。</div>
+        </div>
+    </div>
+
+    <h3>⚡ 其他</h3>
+    <div class="weapon-container">
+        <div class="weapon-card">
+            <img src="photo/武器/电击枪.jfif" alt="电击枪" class="weapon-img">
+            <div class="weapon-name">其他武器说明</div>
+            <div class="weapon-desc">与警方相同，匪方也可以使用电击枪等特殊武器。</div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>CS2主题站 © 2025 遂宁工程职业学院——周天赐</p>
+    <div class="links">
+        <a href="https://www.valvesoftware.com/zh-cn/" target="_blank">Valve官方网站</a>
+        <a href="https://store.steampowered.com/app/730/CounterStrike_2/" target="_blank">Steam商店页面</a>
+        <a href="玩家反馈.html">反馈与建议</a>
+    </div>
+</div>
+</body>
+</html>
